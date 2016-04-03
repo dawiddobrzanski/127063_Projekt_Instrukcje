@@ -11,8 +11,11 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo 'Hello ';
-        // put your code here
+        
+        $con = mysqli_connect("127.0.0.1","root","","sprawozdania");
+        echo 'Baza podłączona';
+        echo 'Baza podłączona2';
+        
         ?>
     </body>
 </html>
