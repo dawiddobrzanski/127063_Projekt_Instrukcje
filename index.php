@@ -12,10 +12,10 @@ and open the template in the editor.
     <body>
         <?php
         
-        $con = mysqli_connect("127.0.0.1","root","","sprawozdania");
-        echo 'Baza podłączona';
-        echo 'Baza podłączona2';
+       include('logged.php');
         
         ?>
+        <h1>Welcome <?php echo $login_session; ?></h1>
+        <h2><a href = "sign_out.php">Sign Out</a></h2> 
     </body>
 </html>
