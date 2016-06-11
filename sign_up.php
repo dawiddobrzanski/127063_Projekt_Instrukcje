@@ -37,7 +37,7 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 
                         $count = mysqli_num_rows($result);
 
-                        // If result matched $myusername and $mypassword, table row must be 1 row
+                        
 
                         if($count >0) {
                                 echo '<p>Login już istnieje!</p>';
@@ -81,13 +81,12 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 			echo '<p>Niepoprawny email!</p>';
 			$correct = false;
 		}
-		echo $correct;
+		//echo $correct;
 		//Jeśli jest wszystko ok:
 		if($correct == true){
-			//$connect = new DB_connect();
-			//$connect->set_charset("utf8");
 			
-                        $password = mysqli_real_escape_string($connect,$_POST['haslo']);
+			
+                        //$password = mysqli_real_escape_string($connect,$_POST['haslo']);
 		
 			$sql = "INSERT INTO uzytkownik ". "(imie,nazwisko, mail, login, haslo, id_typu) ". "VALUES('$imie','$nazwisko','$email', '$login', '$password', '2')";
                         //echo $sql;
@@ -108,7 +107,7 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 }
 ?>
 	<div align = "center">
-         <div style = "width:300px; border: solid 1px #333333; " align = "left">
+         <div style = "width:500px; border: solid 1px #333333; " align = "center">
             <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Rejestracja</b></div>
 				
             <div style = "margin:30px">

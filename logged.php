@@ -22,9 +22,8 @@
     </head>
     <body>
         
-        <h1>Witaj <?php echo $login_session; ?></h1>
-        <h2><a href = "sign_out.php">Wyloguj się</a></h2>
-        <h2><a href = "index.php">strona główna</a></h2>
-        <h2><a href = "upload.php">Wgraj plik</a></h2>
+        <h1>Witaj <?php echo $login_session; ?></h1><a href = "sign_out.php">Wyloguj się</a>
+        <h2 align = "center"> ||<a href = "index.php">Strona Główna</a> || <a href = "upload.php">Wgraj plik</a> || <a href = "link.php">Wgraj link</a>||</h2>
+        
     </body>
 </html>

@@ -6,13 +6,16 @@
        
       
       $myusername = mysqli_real_escape_string($connect,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($connect,$_POST['password']); 
+      $mypassword = mysqli_real_escape_string($connect,$_POST['password']);
+      $mypassword = crypt($mypassword, '$2a$11$o8xak4vbwevd9ylqbp2uvz61t$');
+      $mypassword = substr($mypassword, 40);
       
       $sql = "SELECT id_uzytkownika FROM uzytkownik WHERE login = '$myusername' and haslo = '$mypassword'";
       //echo $sql;
       $result = mysqli_query($connect,$sql);
       if (!$result) {
-    printf("Error: %s\n", mysqli_error($connect));
+          echo '<p>Niepoprawne hasło!</p>';
+    //printf("Error: %s\n", mysqli_error($connect));
     exit();
 }
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -28,7 +31,7 @@
          
          header("location: index.php");
       }else {
-         $error = "podałeś zły login lub hasło";
+         echo '<p>Niepoprawne hasło lub login!</p>';
       }
    }
 ?>
@@ -44,7 +47,7 @@
    <body bgcolor = "#FFFFFF">
 	
       <div align = "center">
-         <div style = "width:300px; border: solid 1px #333333; " align = "left">
+         <div style = "width:500px; border: solid 1px #333333; " align = "center">
             <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Logowanie</b></div>
 				
             <div style = "margin:30px">
