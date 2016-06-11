@@ -4,11 +4,17 @@
    
    $user_check = $_SESSION['login_user'];
    
-   $ses_sql = mysqli_query($connect,"select login from uzytkownik where login = '$user_check' ");
+   $ses_sql = mysqli_query($connect,"select login, id_typu from uzytkownik where login = '$user_check' ");
    
    $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
    
    $login_session = $row['login'];
+   $typ = $row['id_typu'];
+   if($typ==1)
+   {
+       echo "<a href='admin.php'>Panel Admina</a>";
+       
+   }
    
    if(!isset($_SESSION['login_user'])){
       header("location:sign_in.php");
