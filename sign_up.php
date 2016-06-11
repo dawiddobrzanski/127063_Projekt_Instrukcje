@@ -6,20 +6,23 @@ if(!isset($_SESSION)) session_start();
 	<head>
 	<meta charset="utf-8" />
 	<title>Rejestracja</title>
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 	</head>
 	<body>
-            <p>Możesz się zalogować <a href="sign_in.php">tutaj</a></p>	
+            	
 <?php
 //Jeśli sesja nie jest ustawiona i został wysłany formularz rejestracji:
 if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["Rejestracja"]!= null)){
 
 
 //Pobranie danych wysłanych przez formularz
+        $imie = trim($_POST["imie"]);
+        $nazwisko = trim($_POST["nazwisko"]);
 	$login = trim($_POST["login"]);
 	$password = trim($_POST["haslo"]);
 	$email = trim($_POST["email"]);
 	
-	if($login != null && $password != null && $email != null){
+	if($login != null && $password != null && $email != null && $imie != null && $nazwisko != null){
 		$correct = true;
 		require_once 'baza.php';
 		
@@ -86,11 +89,12 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 			
                         $password = mysqli_real_escape_string($connect,$_POST['haslo']);
 		
-			$sql = "INSERT INTO uzytkownik ". "(imie,nazwisko, mail, login, haslo, id_typu) ". "VALUES('Przemek','Ostry','$email', '$login', '$password', '2')";
+			$sql = "INSERT INTO uzytkownik ". "(imie,nazwisko, mail, login, haslo, id_typu) ". "VALUES('$imie','$nazwisko','$email', '$login', '$password', '2')";
                         //echo $sql;
                         
                         if (mysqli_query($connect, $sql)) {
                         echo "New record created successfully";
+                        header("Location: sign_in.php");
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($connect);
                         }
@@ -103,15 +107,24 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 	}
 }
 ?>
-	<div id="zarejestruj">
+	<div align = "center">
+         <div style = "width:300px; border: solid 1px #333333; " align = "left">
+            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Rejestracja</b></div>
+				
+            <div style = "margin:30px">
 			<form id="rejestracja" action="sign_up.php" method="post">
-				<p> Login: <input type="text" name="login" /></p>
-				<p>Hasło: <input type="password" name="haslo" /></p>
-				<p>Email: <input type="text" name="email" /></p>
+                               <label>Imie  :</label> <input type="text" name="imie"  class = "box"/><br/><br />
+                                <label>Nazwisko  :</label> <input type="text" name="nazwisko"  class = "box"/><br/><br />
+				<label>Login  :</label> <input type="text" name="login" class = "box" /><br/><br />
+				<label>Hasło  :</label> <input type="password" name="haslo" class = "box" /><br/><br />
+				<label>Email  :</label> <input type="text" name="email"  class = "box"/><br/><br />
 				<p><input type="submit" value="Rejestracja" name="Rejestracja" /></p>
 			</form>
-			</div>	
+			</div>
+            <p>Możesz się zalogować <a href="sign_in.php">tutaj</a></p>
 		</div>
+            </div>
+           
 	</body>
 </html>
 

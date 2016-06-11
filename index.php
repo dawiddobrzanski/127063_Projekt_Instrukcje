@@ -10,12 +10,9 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        
-       include('logged.php');
-        
+        <?php include('logged.php');
+              include('wyswietl.php');
         ?>
-        <h1>Welcome <?php echo $login_session; ?></h1>
-        <h2><a href = "sign_out.php">Sign Out</a></h2> 
+         
     </body>
 </html>
