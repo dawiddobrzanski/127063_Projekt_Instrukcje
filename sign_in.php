@@ -17,10 +17,8 @@
           echo '<p>Niepoprawne hasło!</p>';
     
     exit();
-}
-      //$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      //$active = $row['active'];
-      
+        }
+
       $count = mysqli_num_rows($result);
       
       

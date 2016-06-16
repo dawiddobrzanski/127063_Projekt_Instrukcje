@@ -24,6 +24,10 @@
         
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <style>
+            body{
+                
+                background-color: #eee;
+            }
             .container2 {
             
             float: none;

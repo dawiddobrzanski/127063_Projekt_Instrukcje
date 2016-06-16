@@ -7,7 +7,7 @@
         body {
             padding-top: 0px;
             padding-bottom: 40px;
-            background-color: #eee;
+            
           }
 
         .form-signin {
@@ -19,7 +19,7 @@
         
     </head>
         
-  <body bgcolor = "#FFFFFF">
+  <body >
       
       <?php include('logged.php');?>
       

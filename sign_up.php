@@ -48,8 +48,7 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
                         //echo $sql;
                         $result = mysqli_query($connect,$sql);
                         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-                        $active = $row['active'];
-
+                        
                         $count = mysqli_num_rows($result);
 
                         
@@ -63,7 +62,7 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 				$correct = false;
 		}
 		
-			// PASSWORD
+			// hasło
 		if(strlen($password) > 3 && strlen($password)<20){
 			$password = crypt($password, '$2a$11$o8xak4vbwevd9ylqbp2uvz61t$');
 			$password = substr($password, 40);
@@ -74,31 +73,30 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 		
 				//EMAIL
 		if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-			//$connect = new DB_connect();
-			//$connect -> set_charset("utf8");
 			$email = mysqli_real_escape_string($connect,$_POST['email']);
-		
 			$sql = "SELECT id_uzytkownika FROM uzytkownik WHERE mail = '$email'";
-                        //echo $sql;
+                        
                         $result = mysqli_query($connect,$sql);
                         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                         $active = $row['active'];
 
                         $count = mysqli_num_rows($result);
-
-                        // If result matched $myusername and $mypassword, table row must be 1 row
+                        
+                        //Jeśli coś znajdzie jest błąd
 
                         if($count >0) {
 				echo '<p>Email już istnieje!</p>';
 				$correct = false;
-			}
-		}else{
-			echo '<p>Niepoprawny email!</p>';
-			$correct = false;
-		}
-		//echo $correct;
-		//Jeśli jest wszystko ok:
-		if($correct == true){
+                                    }
+                        }
+                        
+                        else{
+                                echo '<p>Niepoprawny email!</p>';
+                                $correct = false;
+                        }
+                        //echo $correct;
+                        //Jeśli jest wszystko ok:
+                        if($correct == true){
 			
 			
                         //$password = mysqli_real_escape_string($connect,$_POST['haslo']);
