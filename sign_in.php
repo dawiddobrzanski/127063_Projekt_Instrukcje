@@ -15,11 +15,11 @@
       $result = mysqli_query($connect,$sql);
       if (!$result) {
           echo '<p>Niepoprawne hasło!</p>';
-    //printf("Error: %s\n", mysqli_error($connect));
+    
     exit();
 }
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
+      //$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      //$active = $row['active'];
       
       $count = mysqli_num_rows($result);
       
@@ -39,33 +39,49 @@
    
    <head>
       <title>Strona Logowania</title>
-      <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+          }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+          }  
+      </style>
       
       
    </head>
    
    <body bgcolor = "#FFFFFF">
 	
-      <div align = "center">
-         <div style = "width:500px; border: solid 1px #333333; " align = "center">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Logowanie</b></div>
-				
-            <div style = "margin:30px">
-               
-               <form action = "" method = "post">
-                  <label>Login  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Hasło  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type = "submit" value = " Zaloguj "/><br />
-                  <h2><a href = "sign_up.php">Rejestracja</a></h2> 
-               </form>
-               
-               
-					
-            </div>
-				
-         </div>
-			
-      </div>
+       <div class="container">
+
+      <form class="form-signin" method = "post">
+        <h2 class="form-signin-heading">Logowanie</h2>
+        
+        <label for="login" class="sr-only">Login: </label>
+        <input type="text" name = "username" class="form-control" placeholder="Podaj login" required>
+        
+        <label for="password" class="sr-only">Hasło: </label>
+        <input type="password" name = "password" class="form-control" placeholder="Podaj hasło" required>
+        
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Zapamiętaj
+            
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"> Zaloguj</button>
+        
+        <a class="btn btn-success btn-block" href="sign_up.php" role="button">Rejestracja</a>
+      </form>
+
+    </div>
 
    </body>
 </html>

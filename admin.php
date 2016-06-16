@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <title>Admin</title>
+        <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 40px;
+            background-color: #eee;
+          }
+
+        .container {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+          }  
+      </style>
+    </head>
   <body>
       
       
@@ -17,15 +32,19 @@
       }
           ?>
       
-      <div align = "center">
-         <div style = "width:500px; border: solid 1px #333333; " align = "center">
-             
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Pomoce</b></div>
-            <table>
-                <tr>
-                    <th>Użytkownik |</th>
-                    <th> Akcja |</th>
-                </tr>
+      <div class="container">
+
+     
+        <h2 class="form-signin-heading">Usuń użytkownika</h2>
+        
+        <table class="table">
+                    <tr>
+                        <th class="table-bordered">Użytkownik</th>
+                        <th class="table-bordered">Akcja</th>
+                        
+                    </tr>
+      
+      
                 <?php
                 $sql = "SELECT id_uzytkownika, imie, nazwisko, mail, login FROM uzytkownik";
                 $result = $connect->query($sql);
@@ -34,16 +53,16 @@
                         echo "<tr>\n";
                         echo "<td>".$row['login']."</td>\n";
                         echo "<td><form method='POST' action=''> <input type='hidden' name='id_uzytkownika' value='"
-                        .$row['id_uzytkownika']."'> <input type='submit' name='usun' value='Usuń'> </form></td>\n";
+                        .$row['id_uzytkownika']."'>"?> <input type='submit' name='usun' class="btn btn-danger" value='Usuń'> <?php "  </form></td>\n";
                         echo "</tr>";
                     }
                 }
                 ?>
-			
-            <div style = "margin:30px">
+		
+                        
+            
 
-  </div>
-</div>     
+     
       </table> 
       </body>
 </html>

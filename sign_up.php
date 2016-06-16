@@ -6,7 +6,22 @@ if(!isset($_SESSION)) session_start();
 	<head>
 	<meta charset="utf-8" />
 	<title>Rejestracja</title>
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        
+        <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+          }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+          }  
+      </style>
+        
 	</head>
 	<body>
             	
@@ -106,24 +121,34 @@ if(!isset($_SESSION["login_user"]) && (isset($_POST["Rejestracja"]) && $_POST["R
 	}
 }
 ?>
-	<div align = "center">
-         <div style = "width:500px; border: solid 1px #333333; " align = "center">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Rejestracja</b></div>
-				
-            <div style = "margin:30px">
-			<form id="rejestracja" action="sign_up.php" method="post">
-                               <label>Imie  :</label> <input type="text" name="imie"  class = "box"/><br/><br />
-                                <label>Nazwisko  :</label> <input type="text" name="nazwisko"  class = "box"/><br/><br />
-				<label>Login  :</label> <input type="text" name="login" class = "box" /><br/><br />
-				<label>Hasło  :</label> <input type="password" name="haslo" class = "box" /><br/><br />
-				<label>Email  :</label> <input type="text" name="email"  class = "box"/><br/><br />
-				<p><input type="submit" value="Rejestracja" name="Rejestracja" /></p>
-			</form>
-			</div>
-            <p>Możesz się zalogować <a href="sign_in.php">tutaj</a></p>
-		</div>
-            </div>
-           
+	  
+    <div class="container">
+
+      <form id="rejestracja" action="sign_up.php" class="form-signin" method = "post">
+        <h2 class="form-signin-heading">Rejestracja</h2>
+        
+        <label for="login" class="sr-only">Imię: </label>
+        <input type="text" name = "imie" class="form-control" placeholder="Podaj Imię" required>
+        
+        <label for="login" class="sr-only">Nazwisko: </label>
+        <input type="text" name = "nazwisko" class="form-control" placeholder="Podaj Nazwisko" required>
+        
+        <label for="login" class="sr-only">Login: </label>
+        <input type="text" name = "login" class="form-control" placeholder="Podaj Login" required>
+        
+        <label for="login" class="sr-only">Email: </label>
+        <input type="text" name = "email" class="form-control" placeholder="Podaj Email" required>
+        
+        <label for="password" class="sr-only">Hasło</label>
+        <input type="password" name = "haslo" class="form-control" placeholder="Podaj Hasło" required>
+       
+        <button class="btn btn-lg btn-success btn-block" type="submit" value="Rejestracja" name="Rejestracja">Zarejestruj się</button>
+        <a class="btn btn-primary btn-block" href="sign_in.php" role="button">Przejdź do logowania</a>
+      </form>
+
+    </div>
+            
+            
 	</body>
 </html>
 

@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <body>
+    <head>
+        <title>Dodaj link</title>
       
-      
-      <?php include('logged.php');?>
-      <div align = "center">
-         <div style = "width:500px; border: solid 1px #333333; " align = "center">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Wgraj link:</b></div>
-				
-            <div style = "margin:30px">
-      <form action = "link.php" method = "post">
-                  Podaj link:
-      <input type="link" name="link" id="link">
-      <p> Krótki opis linku: <input type="text" name="tytul" /></p>
-      <input type="submit" onclick="myFunction()" value="Prześlij" name="submit">
-               </form>
+      <style>
+        body {
+            padding-top: 0px;
+            padding-bottom: 40px;
+            background-color: #eee;
+          }
 
-            </div>
-				
-        </div>
-      </div>
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+          }  
+      </style>
+        
+    </head>
+  <body>
+      <?php include('logged.php');?>
+      
+      <div class="container">
+
+      <form action = "link.php" class="form-signin" method = "post">
+        <h2 class="form-signin-heading">Wgraj link:</h2>
+        
+        <label for="link" class="sr-only">Podaj link: </label>
+        <input type="link" name = "link" class="form-control" id="link" placeholder="Podaj Link" required>
+        
+        <label for="opis" class="sr-only">Krótki opis linku:  </label>
+        <input type="text" name = "tytul" class="form-control" placeholder="Podaj krótki opis linku">
+        
+        <button class="btn btn-lg btn-success btn-block" onclick="myFunction()" type="submit" value="Prześlij" name="submit">Prześlij</button>
+        
+      </form>
+
+    </div>
+      
+      
 
 <?php
  if(isset($_POST["submit"])) {
